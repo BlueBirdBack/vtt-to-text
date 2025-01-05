@@ -22,7 +22,7 @@ def vtt_to_transcript(vtt_file_path):
     except FileNotFoundError:
         print(f"Error: File not found at {vtt_file_path}")
         return None
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-except
         print(f"Error reading file: {e}")
         return None
 
@@ -78,7 +78,7 @@ def process_directory(input_dir, output_dir):
                     with open(output_file_path, "w", encoding="utf-8") as f:
                         f.write(transcript)
                     print(f"Transcript saved to {output_file_path}")
-                except Exception as e:
+                except Exception as e:  # pylint: disable=broad-except
                     print(f"Error writing to file: {e}")
 
 
@@ -123,7 +123,7 @@ def main():
                 with open(output_file_path, "w", encoding="utf-8") as f:
                     f.write(transcript)
                 print(f"Transcript saved to {output_file_path}")
-            except Exception as e:
+            except Exception as e:  # pylint: disable=broad-except
                 print(f"Error writing to file: {e}")
     else:
         parser.print_help()
